@@ -2,16 +2,7 @@
 <!DOCTYPE html>
 <html ng-app="CourseStruts" lang="es">
 <head>
-    <script src="js/angular.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/modules/user/user.js"></script>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <jsp:include page="./views/layout/head.jsp" />
     <title>Roles | 20203TN066</title>
 </head>
 <body>
@@ -57,86 +48,8 @@
     <!--CONTENIDO DE LA PÁGINA-->
 </div>
 
-<!-- Modal de Registro de Rol-->
-<div class="modal fade" id="addRole" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-            <div class="card border-0">
-                <div class="card-header text-white bg-dark pb-2">
-                    <h3><i class="fas fa-plus"></i> Agregar rol</h3>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12 input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Nombre: </span>
-                            </div>
-                            <input class="form-control" placeholder="Ej. Administrador" type="text" id="name" name="name" autocomplete="off" required>
-                        </div>
-                        <div class="col-12 input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Estado: </span>
-                            </div>
-                            <select class="form-control" name="status" id="status">
-                                <option selected>Seleccione una opción</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer text-right">
-                    <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary">Guardar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal de Modificación de Datos del Rol-->
-<div class="modal fade" id="updateRole" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-            <div class="card border-0">
-                <div class="card-header text-white bg-dark pb-2">
-                    <h3><i class="fas fa-edit"></i> Modificar datos del rol</h3>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12 input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Nombre: </span>
-                            </div>
-                            <input class="form-control" placeholder="Ej. Administrador" type="text" id="name" name="name" autocomplete="off" required>
-                        </div>
-                        <div class="col-12 input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Estado: </span>
-                            </div>
-                            <select class="form-control" name="status" id="status">
-                                <option selected>Seleccione una opción</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer text-right">
-                    <button class="btn btn-secondary" data-dismiss="modal">Descartar</button>
-                    <button class="btn btn-primary">Modificar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+<jsp:include page="./views/component/role/roleModals.jsp"/>
 </body>
-
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
-        integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
-        crossorigin="anonymous"></script>
+<jsp:include page="./views/layout/footer.jsp"/>
 
 </html>
