@@ -12,6 +12,10 @@
             <result>/index.jsp</result>
         </action>
 
+        <action name="user" class="com.utez.edu.mx.coursestruts.user.ActionUser" method="user">
+            <result name="success">/views/user/user.jsp</result>
+        </action>
+
         <action name="findAllStatus" class="com.utez.edu.mx.coursestruts.status.ActionStatus" method="findAllStatus">
             <result type="json"/>
         </action>
@@ -21,6 +25,10 @@
         </action>
 
         <action name="createRol" class="com.utez.edu.mx.coursestruts.rol.ActionRol" method="createRol">
+            <result type="json" />
+        </action>
+
+        <action name="updateRole" class="com.utez.edu.mx.coursestruts.rol.ActionRol" method="updateRole">
             <result type="json" />
         </action>
     </package>

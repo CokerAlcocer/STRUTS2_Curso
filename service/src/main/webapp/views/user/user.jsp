@@ -1,13 +1,11 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%String context = application.getContextPath();%>
-<!DOCTYPE html>
-<html ng-app="CourseStruts" lang="es">
+<html ng-app="CourseStruts">
 <head>
-    <jsp:include page="./views/layout/head.jsp" />
-    <title>Roles | 20203TN066</title>
+    <jsp:include page="../layout/head.jsp"/>
+    <title>User | 20203TN066</title>
 </head>
 <body ng-controller="user">
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Gestión de usuarios</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -37,41 +35,18 @@
 <div class="container mt-3">
     <div class="row d-flex align-items-center">
         <div class="col-6">
-            <h1>Roles</h1>
+            <h1>Usuario</h1>
         </div>
         <div class="col-6 text-right">
-            <i role="button" data-target="#addRole" data-toggle="modal"
+            <i role="button" data-target="#addUser" data-toggle="modal"
                class="h1 text-success fas fa-plus"></i>
         </div>
     </div>
     <hr class="mt-0">
-    <!--CONTENIDO DE LA PÁGINA-->
-    <table class="table" ng-init="findAllRoles()">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Rol</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Acciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="rol in arrayRoles | orderBy: 'status.name'">
-            <th ng-bind="$index + 1"></th>
-            <td ng-bind="rol.name"></td>
-            <td ng-bind="rol.status.name"></td>
-            <td>
-                <button class="btn btn-primary" ng-click="detailsRole(rol)"><i class="fas fa-info-circle"></i></button>
-                <button class="btn btn-warning" ng-click="updateRole(rol)"><i class="fas fa-edit"></i></button>
-                <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
 </div>
 
-<jsp:include page="./views/component/role/roleModals.jsp"/>
-<jsp:include page="./views/layout/footer.jsp"/>
-</body>
+<jsp:include page="../layout/footer.jsp"/>
+<jsp:include page="../component/user/userModals.jsp"/>
 
+</body>
 </html>
