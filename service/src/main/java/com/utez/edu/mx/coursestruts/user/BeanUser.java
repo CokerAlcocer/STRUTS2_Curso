@@ -8,7 +8,7 @@ import java.util.List;
 
 public class BeanUser {
     private int id;
-    private String name, email, password, createAt;
+    private String email, password, createAt;
     private BeanStatus status;
     private List<BeanRol> roles;
     private BeanPerson person;
@@ -16,8 +16,7 @@ public class BeanUser {
     public BeanUser() {
     }
 
-    public BeanUser(String name, String email, String password, String createAt, BeanStatus status, List<BeanRol> roles, BeanPerson person) {
-        this.name = name;
+    public BeanUser(String email, String password, String createAt, BeanStatus status, List<BeanRol> roles, BeanPerson person) {
         this.email = email;
         this.password = password;
         this.createAt = createAt;
@@ -26,9 +25,15 @@ public class BeanUser {
         this.person = person;
     }
 
-    public BeanUser(int id, String name, String email, String password, String createAt, BeanStatus status, List<BeanRol> roles, BeanPerson person) {
+    public BeanUser(int id, String email, String createAt, BeanStatus status) {
         this.id = id;
-        this.name = name;
+        this.email = email;
+        this.createAt = createAt;
+        this.status = status;
+    }
+
+    public BeanUser(int id, String name, String password, String createAt, BeanStatus status, List<BeanRol> roles, BeanPerson person) {
+        this.id = id;
         this.email = email;
         this.password = password;
         this.createAt = createAt;
@@ -43,14 +48,6 @@ public class BeanUser {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getEmail() {

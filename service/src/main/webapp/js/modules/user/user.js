@@ -4,6 +4,7 @@ app.controller('user', ['$scope', '$http', '$window', function($scope, $http){
     $scope.arrayStatus = [];
     $scope.arrayRoles = [];
     $scope.selectedRoles = [];
+    $scope.arrayUsers = [];
 
     $scope.findAllStatus = () => {
         $http({
@@ -28,7 +29,6 @@ app.controller('user', ['$scope', '$http', '$window', function($scope, $http){
     }
 
     $scope.findAllRoles = () => {
-        console.log("jkldsjgfkljsgl")
         $http({
             method: 'GET',
             url: 'http://localhost:8080/CourseStruts_war_exploded/findAllRoles'
@@ -71,4 +71,25 @@ app.controller('user', ['$scope', '$http', '$window', function($scope, $http){
         $scope.selectedRoles.splice($scope.selectedRoles.indexOf(rol), 1)
     }
 
+    $scope.sendUser = () => {
+        $scope.user.roles = $scope.selectedRoles
+        $scope.user.person.birthday = `${$scope.user.person.birthday.getFullYear()}-${$scope.user.person.birthday.getMonth()+1}-${$scope.user.person.birthday.getDate()}`
+        $http({
+            method: 'POST',
+            url: 'http://localhost:8080/CourseStruts_war_exploded/sendUser',
+            data: `data=${angular.toJson($scope.user)}`
+        }).then((response) => {
+            console.log(response)
+        })
+    }
+
+    $scope.findAllUsers = () => {
+        $http({
+            method: 'GET',
+            url: 'http://localhost:8080/CourseStruts_war_exploded/findAllUsers'
+        }).then((response => {
+            const {data: {listUser}} = response
+             $scope.arrayUsers = listUser
+        }));
+    }
 }])

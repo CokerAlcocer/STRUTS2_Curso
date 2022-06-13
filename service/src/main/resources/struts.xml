@@ -24,12 +24,20 @@
             <result type="json" />
         </action>
 
+        <action name="findAllUsers" class="com.utez.edu.mx.coursestruts.user.ActionUser" method="findAllUsers">
+            <result type="json" />
+        </action>
+
         <action name="createRol" class="com.utez.edu.mx.coursestruts.rol.ActionRol" method="createRol">
             <result type="json" />
         </action>
 
         <action name="updateRole" class="com.utez.edu.mx.coursestruts.rol.ActionRol" method="updateRole">
             <result type="json" />
+        </action>
+
+        <action name="sendUser" class="com.utez.edu.mx.coursestruts.user.ActionUser" method="sendUser">
+            <result name="success">/views/user/user.jsp</result>
         </action>
     </package>
 

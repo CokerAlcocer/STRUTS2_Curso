@@ -1,11 +1,12 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%String context = application.getContextPath();%>
+<!DOCTYPE html>
 <html ng-app="CourseStruts">
 <head>
     <jsp:include page="../layout/head.jsp"/>
     <title>User | 20203TN066</title>
 </head>
-<body ng-controller="user">
+<body ng-controller="user" style="font-family: Arial">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Gestión de usuarios</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -15,10 +16,10 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="<%=context%>/index">Roles</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="<%=context%>/user">Usuarios</a>
             </li>
             <li class="nav-item">
@@ -43,6 +44,31 @@
         </div>
     </div>
     <hr class="mt-0">
+
+    <table class="table" ng-init="findAllUsers()">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Correo electrónico</th>
+            <th scope="col">Fecha de creación</th>
+            <th scope="col">Estado</th>
+            <th scope="col" class="text-center">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="user in arrayUsers | orderBy: 'status.name'">
+            <th ng-bind="$index + 1"></th>
+            <td ng-bind="user.email"></td>
+            <td ng-bind="user.createAt"></td>
+            <td ng-bind="user.status.name"></td>
+            <td class="text-center">
+                <button class="btn btn-primary" ng-click="detailsUser(user)"><i class="fas fa-info-circle"></i></button>
+                <button class="btn btn-warning" ng-click="updateUser(user)"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 <jsp:include page="../layout/footer.jsp"/>

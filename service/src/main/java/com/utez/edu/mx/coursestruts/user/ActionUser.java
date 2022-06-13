@@ -1,5 +1,9 @@
 package com.utez.edu.mx.coursestruts.user;
 
+import com.google.gson.Gson;
+import org.apache.struts2.components.Bean;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +18,26 @@ public class ActionUser {
     // Acciones de la clase
 
     public String user() {
+        return SUCCESS;
+    }
+
+    public String findAllUsers() throws SQLException {
+        setListUser(new DaoUser().findAll());
+        if(listUser.size() > 0) {
+            setMessage("success");
+        }else{
+            setMessage("fail");
+        }
+        return SUCCESS;
+    }
+
+    public String sendUser() throws SQLException {
+        user = new Gson().fromJson(data, BeanUser.class);
+        if(new DaoUser().saveUser(user)){
+            setMessage("success");
+        }else{
+            setMessage("fail");
+        }
         return SUCCESS;
     }
 

@@ -95,8 +95,7 @@
                     </div>
                 </div>
                 <div class="card-footer text-right">
-                    <button class="btn btn-secondary" data-dismiss="modal">Descartar</button>
-                    <button class="btn btn-primary">Modificar</button>
+                    <button class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
