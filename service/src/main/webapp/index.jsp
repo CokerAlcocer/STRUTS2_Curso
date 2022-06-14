@@ -6,7 +6,7 @@
     <jsp:include page="./views/layout/head.jsp" />
     <title>Roles | 20203TN066</title>
 </head>
-<body ng-controller="user" style="font-family: Arial">
+<body ng-controller="roles" style="font-family: Arial">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Gestión de usuarios</a>
