@@ -62,6 +62,32 @@ public class DaoRol {
         return roles;
     }
 
+    public List<BeanRol> findRoles (int id) throws SQLException {
+        List<BeanRol> roles = new ArrayList<>();
+        try {
+            con = ConnectionMysql.getConnection();
+            String query = "SELECT r.id, r.name, r.status_id FROM rol_has_user u INNER JOIN rol r ON u.rol_id = r.id WHERE u.user_id = ?";
+            pstm = con.prepareStatement(query);
+            pstm.setInt(1, id);
+            rs = pstm.executeQuery();
+            while(rs.next()){
+                roles.add(new BeanRol(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        new BeanStatus(
+                                rs.getInt("status_id"),
+                                null
+                        )
+                ));
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return roles;
+    }
+
     public boolean updateRol(BeanRol r) throws SQLException{
         boolean status = false;
         try {

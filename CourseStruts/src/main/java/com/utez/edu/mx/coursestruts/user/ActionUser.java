@@ -40,6 +40,16 @@ public class ActionUser {
         return SUCCESS;
     }
 
+    public String updateUser() throws SQLException {
+        user = new Gson().fromJson(data, BeanUser.class);
+        if(new DaoUser().updateUser(user)){
+            setMessage("success");
+        }else{
+            setMessage("fail");
+        }
+        return SUCCESS;
+    }
+
     // Getters y Setters de la clase
 
     public List<BeanUser> getListUser() {

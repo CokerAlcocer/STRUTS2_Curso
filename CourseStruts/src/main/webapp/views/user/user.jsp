@@ -64,8 +64,11 @@
             <td ng-bind="user.status.name"></td>
             <td class="text-center">
                 <button class="btn btn-primary" ng-click="detailsUser(user)"><i class="fas fa-info-circle"></i></button>
+                <button class="btn btn-primary" ng-click="updateRolesUser(user)"><i class="fas fa-tags"></i></button>
+                <button class="btn btn-primary" ng-click="changeUserPassword(user)"><i class="fas fa-key"></i></button>
                 <button class="btn btn-warning" ng-click="updateUser(user)"><i class="fas fa-edit"></i></button>
-                <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                <button class="btn btn-success"><i class="fas fa-arrow-up"></i></button>
+                <button class="btn btn-danger"><i class="fas fa-arrow-down"></i></button>
             </td>
         </tr>
         </tbody>

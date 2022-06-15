@@ -9,6 +9,7 @@ app.controller('user', ['$scope', '$http', '$window', function($scope, $http){
     $scope.selectedRoles = [];
     $scope.arrayUsers = [];
 
+    // RECUPERACIÓN DE INFORMACIÓN
     $scope.findAllStatus = () => {
         $http({
             method: 'POST',
@@ -24,9 +25,56 @@ app.controller('user', ['$scope', '$http', '$window', function($scope, $http){
             method: 'GET',
             url: url + 'findAllRoles'
         }).then(function (response) {
-            console.log(response)
             const {data: {listRoles}} = response;
             $scope.arrayRoles = listRoles;
+        })
+    }
+
+    $scope.findAllUsers = () => {
+        $http({
+            method: 'GET',
+            url: url + 'findAllUsers'
+        }).then((response => {
+            const {data: {listUser}} = response
+            $scope.arrayUsers = listUser
+        }));
+    }
+
+    // ENVÍO DE INFORMACIÓN
+
+    $scope.sendUser = () => {
+        $scope.user.roles = $scope.selectedRoles
+        $scope.user.person.birthday = `${$scope.user.person.birthday.getFullYear()}-${$scope.user.person.birthday.getMonth()+1}-${$scope.user.person.birthday.getDate()}`
+        $http({
+            method: 'POST',
+            url: url + 'sendUser',
+            data: `data=${angular.toJson($scope.user)}`
+        }).then((response) => {
+            $scope.findAllUsers()
+            $('#addUser').modal('hide')
+        })
+    }
+
+    $scope.sendUpdateUser = () => {
+        $scope.updatedUser.person.birthday = `${$scope.updatedUser.person.birthday.getFullYear()}-${$scope.updatedUser.person.birthday.getMonth()+1}-${$scope.updatedUser.person.birthday.getDate()}`
+        $http({
+            method: 'POST',
+            url: url + 'updateUser',
+            data: `data=${angular.toJson($scope.updatedUser)}`
+        }).then((response) => {
+            $scope.findAllUsers()
+            $('#updateUser').modal('hide')
+        })
+    }
+
+    // FUNCIONES ADICIONALES
+
+    $scope.getUserRoles = (user) => {
+        $http({
+            method: 'GET',
+            url: url + 'findUserRoles'
+        }).then(response => {
+            console.log(response)
         })
     }
 
@@ -40,25 +88,22 @@ app.controller('user', ['$scope', '$http', '$window', function($scope, $http){
         $scope.selectedRoles.splice($scope.selectedRoles.indexOf(rol), 1)
     }
 
-    $scope.sendUser = () => {
-        $scope.user.roles = $scope.selectedRoles
-        $scope.user.person.birthday = `${$scope.user.person.birthday.getFullYear()}-${$scope.user.person.birthday.getMonth()+1}-${$scope.user.person.birthday.getDate()}`
-        $http({
-            method: 'POST',
-            url: url + 'sendUser',
-            data: `data=${angular.toJson($scope.user)}`
-        }).then((response) => {
-            console.log(response)
-        })
+    $scope.detailsUser = (user) => {
+        $scope.detailUser = angular.copy(user)
+        $('#infoUser').modal('toggle')
     }
 
-    $scope.findAllUsers = () => {
-        $http({
-            method: 'GET',
-            url: url + 'findAllUsers'
-        }).then((response => {
-            const {data: {listUser}} = response
-             $scope.arrayUsers = listUser
-        }));
+    $scope.updateUser = (user) => {
+        $scope.updatedUser = angular.copy(user)
+        $scope.updatedUser.person.birthday = new Date($scope.updatedUser.person.birthday)
+        $('#updateUser').modal('toggle')
+    }
+
+    $scope.updateRolesUser = (user) => {
+        $scope.arrayRoles = $scope.findAllRoles()
+        for(let i = 0; i < user.roles.length; i++){
+            $scope.selectedRoles(user.roles[i])
+        }
+        $('#userRoles').modal('toggle')
     }
 }])

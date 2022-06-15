@@ -16,26 +16,17 @@ public class BeanUser {
     public BeanUser() {
     }
 
-    public BeanUser(String email, String password, String createAt, BeanStatus status, List<BeanRol> roles, BeanPerson person) {
+    public BeanUser(String email, String createAt, BeanStatus status, List<BeanRol> roles, BeanPerson person) {
         this.email = email;
-        this.password = password;
         this.createAt = createAt;
         this.status = status;
         this.roles = roles;
         this.person = person;
     }
 
-    public BeanUser(int id, String email, String createAt, BeanStatus status) {
+    public BeanUser(int id, String email, String createAt, BeanStatus status, List<BeanRol> roles, BeanPerson person) {
         this.id = id;
         this.email = email;
-        this.createAt = createAt;
-        this.status = status;
-    }
-
-    public BeanUser(int id, String name, String password, String createAt, BeanStatus status, List<BeanRol> roles, BeanPerson person) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
         this.createAt = createAt;
         this.status = status;
         this.roles = roles;

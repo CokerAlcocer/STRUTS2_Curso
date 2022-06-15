@@ -23,7 +23,6 @@ app.controller('role', ['$scope', '$http', '$window', function($scope, $http){
             url: url + 'createRol',
             data: `data=${angular.toJson($scope.rol)}`
         }).then((response) => {
-            console.log(response)
             $scope.findAllRoles()
             $('#addRole').modal('hide')
         })
@@ -56,7 +55,6 @@ app.controller('role', ['$scope', '$http', '$window', function($scope, $http){
             url: url + 'updateRole',
             data: `data=${angular.toJson($scope.updatedRole)}`
         }).then(function (response) {
-            console.log(response)
             $scope.findAllRoles()
             $('#updateRole').modal('hide')
         })
